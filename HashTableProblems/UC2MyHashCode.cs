@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using static HashTable.UC1MyHashCode<K, HashTable.V>;
+using static HashTable.UC2MyHashCode<K, HashTable.V>;
 
 namespace HashTable
 {
-    class UC1MyHashCode<K, V>  //here main hashCode operation
+    class UC2MyHashCode<K, V>  //here main hashCode operation
     {
-        private readonly int size; //here size variable declare
-        private readonly LinkedList<keyValue<K, V>>[] item; //here use linkedlist and array
-        private static object sentence;
+        public readonly int size; //here size variable declare
+        public readonly LinkedList<keyValue<K, V>>[] item; //here use linkedlist and array
         public struct keyValue<K, V>  //here structure define for key and value 
         {
             public K key  //here getter and setter method used
@@ -23,7 +22,7 @@ namespace HashTable
             }
 
         }
-        public UC1MyHashCode(int size)  //here parametric constructore use
+        public UC2MyHashCode(int size)  //here parametric constructore use
         {
             this.size = size;
             this.item = new System.Collections.Generic.LinkedList<keyValue<K, V>>[size];
@@ -74,7 +73,7 @@ namespace HashTable
 
         public static void counWordFrequency(string sentence) //here cound word frequency
         {
-            UC1MyHashCode<string, int> myHashCode = new UC1MyHashCode<string, int>(10);
+            UC2MyHashCode<string, int> myHashCode = new UC2MyHashCode<string, int>(10);
             String[] words = sentence.Split(' ');
             foreach (string word in words)
             {

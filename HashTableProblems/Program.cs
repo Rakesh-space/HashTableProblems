@@ -7,7 +7,7 @@ namespace HashTableProblems
     {
         static void Main(string[] args)
         {
-            UC1MyHashCode<K, V>.counWordFrequency("To be or not to be");
+            UC2MyHashCode<K, V>.counWordFrequency("Paranoids are notparanoid because they are paranoid butbecause they keep putting themselvesdeliberately into paranoid avoidable situations");
             Console.ReadLine();
         }
     }
