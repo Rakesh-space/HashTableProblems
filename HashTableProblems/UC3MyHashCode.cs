@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using static HashTable.UC2MyHashCode<K, HashTable.V>;
+using static HashTable.UC3MyHashCode<K, HashTable.V>;
 
 namespace HashTable
 {
-    class UC2MyHashCode<K, V>  //here main hashCode operation
+    class UC3MyHashCode<K, V>  //here main hashCode operation
     {
         public readonly int size; //here size variable declare
         public readonly LinkedList<keyValue<K, V>>[] item; //here use linkedlist and array
@@ -22,7 +22,7 @@ namespace HashTable
             }
 
         }
-        public UC2MyHashCode(int size)  //here parametric constructore use
+        public UC3MyHashCode(int size)  //here parametric constructore use
         {
             this.size = size;
             this.item = new System.Collections.Generic.LinkedList<keyValue<K, V>>[size];
@@ -63,7 +63,8 @@ namespace HashTable
                 {
                     if (item.key.Equals(key))
                     {
-                        Remove(key);
+                        Remove1(key);
+                        removeSpecificWord(key);
                         break;
                     }
                 }
@@ -73,7 +74,7 @@ namespace HashTable
 
         public static void counWordFrequency(string sentence) //here cound word frequency
         {
-            UC2MyHashCode<string, int> myHashCode = new UC2MyHashCode<string, int>(10);
+            UC3MyHashCode<string, int> myHashCode = new UC3MyHashCode<string, int>(10);
             String[] words = sentence.Split(' ');
             foreach (string word in words)
             {
@@ -91,7 +92,7 @@ namespace HashTable
             myHashCode.Display();
             Console.WriteLine(" ========================================== ");
         }
-        public void Remove(K key) //here if it is matched found ele in linked then remove that ele 
+        public void Remove1(K key) //here if it is matched found ele in linked then remove that ele 
         {
             int possition = getArrayPossition(key);
             LinkedList<keyValue<K, V>> linkedlist = GetLinkedList(possition);
@@ -111,6 +112,32 @@ namespace HashTable
             }
         }
 
+        public void removeSpecificWord(K word1) //here if it is matched found ele in linked then remove that ele 
+        {
+            int possition = getArrayPossition(word1);
+            LinkedList<keyValue<K, V>> linkedlist = GetLinkedList(possition);
+            bool itemFound = false;
+            string words;
+            keyValue<K, V> founditem = default(keyValue<K, V>);
+            foreach (var linkedlist1 in item)
+            {
+                if (linkedlist != null)
+                {
+                    foreach (var ele in linkedlist)
+                    {
+                        if (ele.key.Equals(word1))
+                        {
+                            itemFound = true;
+                            founditem = ele;
+                        }
+                    }
+                }
+            }
+            if (itemFound)
+            {
+                linkedlist.Remove(founditem);
+            }
+        }
         int getArrayPossition(K key)
         {
             throw new NotImplementedException();
