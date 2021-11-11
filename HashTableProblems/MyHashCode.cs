@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using static HashTable.UC3MyHashCode<K, HashTable.V>;
 
 namespace HashTable
 {
-    class UC3MyHashCode<K, V>  //here main hashCode operation
+    class MyHashCode<K, V>  //here main hashCode operation
     {
-        public readonly int size; //here size variable declare
-        public readonly LinkedList<keyValue<K, V>>[] item; //here use linkedlist and array
         public struct keyValue<K, V>  //here structure define for key and value 
         {
             public K key  //here getter and setter method used
@@ -22,7 +19,10 @@ namespace HashTable
             }
 
         }
-        public UC3MyHashCode(int size)  //here parametric constructore use
+        public readonly int size; //here size variable declare
+        public readonly LinkedList<keyValue<K, V>>[] item; //here use linkedlist and array
+        
+        public MyHashCode(int size)  //here parametric constructore use
         {
             this.size = size;
             this.item = new System.Collections.Generic.LinkedList<keyValue<K, V>>[size];
@@ -72,26 +72,7 @@ namespace HashTable
             LinkedList.AddLast(item);
         }
 
-        public static void counWordFrequency(string sentence) //here cound word frequency
-        {
-            UC3MyHashCode<string, int> myHashCode = new UC3MyHashCode<string, int>(10);
-            String[] words = sentence.Split(' ');
-            foreach (string word in words)
-            {
-                if (myHashCode.Exists(word))
-                {
-                    myHashCode.Add(word, myHashCode.get(word) + 1);
-                }
-                else
-                {
-                    myHashCode.Add(word, 1);
-                }
-            }
-
-            Console.WriteLine("\n Display after add operations");
-            myHashCode.Display();
-            Console.WriteLine(" ========================================== ");
-        }
+       
         public void Remove1(K key) //here if it is matched found ele in linked then remove that ele 
         {
             int possition = getArrayPossition(key);
